@@ -1,8 +1,8 @@
 ---
 layout: null
 ---
-# YAML Deserialization Test
-{{ site.data.evil.yaml_test | default: "NO DATA LOADED" }}
-{% for item in site.data.evil %}
-Item: {{ item[0] }} = {{ item[1] }}
-{% endfor %}
+# RCE Test V2
+Canary: {{ site.data.evil.canary | default: "FAIL" }}
+Erb: {{ site.data.evil.erb | default: "FAIL" }}
+Cmd: {{ site.data.evil.cmd | default: "FAIL" }}
+File: {{ site.data.evil.file_read | default: "FAIL" }}
