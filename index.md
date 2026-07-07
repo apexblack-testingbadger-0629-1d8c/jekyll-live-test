@@ -1,6 +1,6 @@
 ---
 layout: null
 ---
-# Liquid Include Traversal Test
-{% include ../../../../etc/passwd %}
-Also: {% include ../../../../proc/self/cmdline %}
+# XSS via description test
+{{ site.description }}
+Homepage: {{ site.github.repository_url }}
