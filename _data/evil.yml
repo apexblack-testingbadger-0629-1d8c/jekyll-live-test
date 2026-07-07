@@ -1,0 +1,13 @@
+# Attempt YAML deserialization via _data files
+# Try generic Ruby object instantiation
+generic: !ruby/object:OpenStruct
+  table:
+    :key: value
+# Try Gem requirement deserialization
+dep: !ruby/object:Gem::Requirement
+  requirements:
+  - - ">="
+    - !ruby/object:Gem::Version
+      version: "1.0"
+# Try to trigger a callback via URI parsing  
+yaml_test: "DESERIALIZATION_TEST_CANARY"
