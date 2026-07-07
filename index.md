@@ -1,8 +1,9 @@
 ---
 layout: null
 ---
-# RCE Test V2
-Canary: {{ site.data.evil.canary | default: "FAIL" }}
-Erb: {{ site.data.evil.erb | default: "FAIL" }}
-Cmd: {{ site.data.evil.cmd | default: "FAIL" }}
-File: {{ site.data.evil.file_read | default: "FAIL" }}
+# Symbol Test
+Canary: {{ site.data.evil.canary }}
+Sym: {{ site.data.evil.sym }}
+Sym2: {{ site.data.evil.sym2 }}
+Klass: {{ site.data.evil.klass }}
+Stru: {{ site.data.evil.stru }}
